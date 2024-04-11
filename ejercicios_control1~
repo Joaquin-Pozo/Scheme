@@ -1,20 +1,12 @@
 #lang scheme
-;****************************EJERCICIO 2****************************
-;Funcion que calcula el largo de una lista
-;Recursión natural
-;DOM: lista (list)
-;REC: largo_lista (int)
+#lang scheme
 (define fn (lambda (lst)
              (if (null? lst)
                  0
                  (+ 1 (fn (cdr lst))))))
 (define len (fn (list 1 2 3 4 5 6 7 8)))
-;len
-
-;Funcion que calcula el largo de una lista
-;Recursión de cola
-;DOM: lista (list)
-;REC: largo_lista (int)
+len
+; utilizando recursion de cola
 (define fn-cola (lambda (lst)
                   (define (wrapper lst acc)
                     (if (null? lst)
@@ -23,12 +15,8 @@
                   (wrapper lst 0)))
 
 (define len-cola (fn-cola (list 1 2 3 4 5 6 7 8)))
-;len-cola
-;Funcion que calcula el largo de una lista
-;Recursión de cola
-;DOM: lista (list)
-;REC: largo_lista (int)
-;utilizando solo lambda
+len-cola
+;utilizando lambda
 (define fn-cola2 (lambda (lst)
                    (define wrapper2 (lambda (lst acc)
                                       (if (null? lst)
@@ -36,8 +24,4 @@
                                           (wrapper2 (cdr lst) (+ 1 acc)))))
                    (wrapper2 lst 0)))
 (define len-cola2 (fn-cola2 (list 1 2 3 4 5 6 7 8)))
-;len-cola2
-;****************************EJERCICIO 3****************************
-(define reducir)
-(define apply-rec (reducir + (list 1 2 3)))
-apply-rec
+len-cola2
