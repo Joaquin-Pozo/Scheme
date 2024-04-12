@@ -38,6 +38,48 @@
 (define len-cola2 (fn-cola2 (list 1 2 3 4 5 6 7 8)))
 ;len-cola2
 ;****************************EJERCICIO 3****************************
-(define reducir)
-(define apply-rec (reducir + (list 1 2 3)))
-apply-rec
+;(define (reducir operacion lista)
+;  (cond
+;    [(null? lista) null]
+;    [(operacion (car lista) (reducir operacion (cdr lista)))]))
+;(define llamar-reducir (reducir + (list 2 2 3)))
+;llamar-reducir
+;**************PAUTA****************
+(define reducir2 (lambda (f l)
+                  (if (null? l) null
+                      (if (null? (cdr l)) ; funciona para listas de al menos 1 elemento
+                          (car l)
+                          (f (car l) (reducir2 f (cdr l)))))))
+(define llamar-reducir2 (reducir2 * (list 2 2 3)))
+;llamar-reducir2
+;**********************EJERCICIO 3)c)************************************
+(define sumatoria (lambda (i n)
+                    (if (= i n)
+                        i
+                        (+ i (sumatoria (+ i 1) n)))))
+(define llamada-sumatoria (sumatoria 0 3))
+llamada-sumatoria
+;utilizando recursion de cola
+(define sumatoria-cola (lambda (i n)
+                         (define wrapper (lambda (i n acc)
+                                           (if (= i n)
+                                               (+ i acc)
+                                               (wrapper (+ i 1) n (+ acc i)))))
+                         (wrapper i n 0)))
+(define llamada-sumatoria-cola (sumatoria-cola 0 3))
+llamada-sumatoria-cola
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
