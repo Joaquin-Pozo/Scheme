@@ -79,8 +79,9 @@
                                  (cons (car lista) (updateElements (cdr lista) validacion elemento))))))
 (define llamada-updateElements (updateElements (list 1 2 3 4 5 6) even? -1))
 llamada-updateElements
-
-
+;**********************EJERCICIO 5************************************
+;Función numeros de Lucas: funcion definida de la manera en que:
+;n = 0 => 2; n = 1 =>; n > 1 => Ln-1 + Ln+2
 
 
 
