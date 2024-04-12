@@ -58,7 +58,7 @@
                         i
                         (+ i (sumatoria (+ i 1) n)))))
 (define llamada-sumatoria (sumatoria 0 3))
-llamada-sumatoria
+;llamada-sumatoria
 ;utilizando recursion de cola
 (define sumatoria-cola (lambda (i n)
                          (define wrapper (lambda (i n acc)
@@ -67,10 +67,18 @@ llamada-sumatoria
                                                (wrapper (+ i 1) n (+ acc i)))))
                          (wrapper i n 0)))
 (define llamada-sumatoria-cola (sumatoria-cola 0 3))
-llamada-sumatoria-cola
-
-
-
+;llamada-sumatoria-cola
+;**********************EJERCICIO 4************************************
+;;Funcion que modifica todos los elementos de una lista que cumplan cierta condicion; los demas elementos se mantienen igual
+;;DOM: lista (list) X funcion-validadora X nuevo-elemento (int)
+(define updateElements (lambda (lista validacion elemento)
+                         (if (null? lista)
+                             null
+                             (if (validacion (car lista))
+                                 (cons elemento (updateElements (cdr lista) validacion elemento))
+                                 (cons (car lista) (updateElements (cdr lista) validacion elemento))))))
+(define llamada-updateElements (updateElements (list 1 2 3 4 5 6) even? -1))
+llamada-updateElements
 
 
 
